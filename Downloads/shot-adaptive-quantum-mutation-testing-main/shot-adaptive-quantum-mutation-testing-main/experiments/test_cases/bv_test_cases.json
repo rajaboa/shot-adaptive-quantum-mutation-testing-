@@ -1,0 +1,27 @@
+{
+  "algorithm": "bernstein_vazirani",
+  "source_file": "programs/bernstein_vazirani.py",
+  "algorithm_class": "BernsteinVazirani",
+  "baseline_shots": 100000,
+  "fixed_shots": 2000,
+  "adaptive_batch_size": 200,
+  "adaptive_max_shots": 2000,
+  "alpha": 0.01,
+  "seed_simulator": 42,
+  "test_cases": [
+    {
+      "id": "bv_3bit_00111100",
+      "bitmap": "00111100",
+      "expected_distribution": {
+        "110": 1.0
+      }
+    },
+    {
+      "id": "bv_3bit_01011010",
+      "bitmap": "01011010",
+      "expected_distribution": {
+        "101": 1.0
+      }
+    }
+  ]
+}

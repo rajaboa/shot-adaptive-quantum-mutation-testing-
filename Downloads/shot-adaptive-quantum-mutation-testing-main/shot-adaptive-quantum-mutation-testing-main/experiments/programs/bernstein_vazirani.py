@@ -1,0 +1,118 @@
+# This code is part of Qiskit.
+#
+# (C) Copyright IBM 2018, 2021.
+#
+# This code is licensed under the Apache License, Version 2.0. You may
+# obtain a copy of this license in the LICENSE.txt file in the root directory
+# of this source tree or at http://www.apache.org/licenses/LICENSE-2.0.
+#
+# Any modifications or derivative works of this code must retain this
+# copyright notice, and modified files need to carry a notice indicating
+# that they have been altered from the originals.
+"""
+The Bernstein-Vazirani algorithm.
+"""
+
+from typing import Dict, Any
+import logging
+import operator
+import numpy as np
+
+from qiskit import ClassicalRegister, QuantumCircuit
+from qiskit.quantum_info import Statevector, partial_trace
+
+logger = logging.getLogger(__name__)
+
+
+class BernsteinVazirani:
+    r"""
+    The Bernstein-Vazirani algorithm.
+
+    The goal of the algorithm is to determine a secret string
+    s in {0,1}^n, given a black box oracle function.
+    """
+
+    def __init__(self, oracle, quantum_instance=None):
+        self._oracle = oracle
+        self._quantum_instance = quantum_instance
+        self._circuit = None
+        self._ret = {}  # type: Dict[str, Any]
+
+    def construct_circuit(self, measurement=False):
+        if self._circuit is not None:
+            return self._circuit
+
+        qc_preoracle = QuantumCircuit(
+            self._oracle.variable_register,
+            self._oracle.output_register,
+        )
+        qc_preoracle.h(self._oracle.variable_register)
+        qc_preoracle.x(self._oracle.output_register)
+        qc_preoracle.h(self._oracle.output_register)
+        qc_preoracle.barrier()
+
+        qc_oracle = self._oracle.circuit
+        qc_oracle.barrier()
+
+        qc_postoracle = QuantumCircuit(
+            self._oracle.variable_register,
+            self._oracle.output_register,
+        )
+        qc_postoracle.h(self._oracle.variable_register)
+
+        self._circuit = qc_oracle.compose(qc_preoracle, front=True).compose(qc_postoracle)
+
+        if measurement:
+            measurement_cr = ClassicalRegister(len(self._oracle.variable_register), name='m')
+            self._circuit.add_register(measurement_cr)
+            self._circuit.measure(self._oracle.variable_register, measurement_cr)
+
+        return self._circuit
+
+    def run(self, quantum_instance=None):
+        if quantum_instance is not None:
+            self._quantum_instance = quantum_instance
+        self._circuit = None
+        return self._run()
+
+    def _run(self):
+        if self._quantum_instance.is_statevector:
+            qc = self.construct_circuit(measurement=False)
+            result = self._quantum_instance.execute(qc)
+            complete_state_vec = result.get_statevector(qc)
+            variable_register_density_matrix = _get_subsystem_density_matrix(
+                complete_state_vec,
+                range(len(self._oracle.variable_register), qc.width())
+            )
+            variable_register_density_matrix_diag = np.diag(variable_register_density_matrix)
+            max_amplitude = max(
+                variable_register_density_matrix_diag.min(),
+                variable_register_density_matrix_diag.max(),
+                key=abs
+            )
+            max_amplitude_idx = \
+                np.where(variable_register_density_matrix_diag == max_amplitude)[0][0]
+            top_measurement = np.binary_repr(max_amplitude_idx, len(self._oracle.variable_register))
+        else:
+            qc = self.construct_circuit(measurement=True)
+            measurement = self._quantum_instance.execute(qc).get_counts(qc)
+            self._ret['measurement'] = measurement
+            top_measurement = max(measurement.items(), key=operator.itemgetter(1))[0]
+
+        self._ret['result'] = top_measurement
+        return self._ret
+
+
+def _get_subsystem_density_matrix(statevector, trace_out_qubits):
+    """Get reduced density matrix by tracing out specified qubits."""
+    sv = Statevector(statevector)
+    rho = partial_trace(sv, list(trace_out_qubits))
+    return np.array(rho.data)
+
+
+def build_circuit(bitmap, measurement=True):
+    """Convenience entry point for adaptive_runner."""
+    from oracle import truth_table_oracle
+    oracle = truth_table_oracle(bitmap)
+    bv = BernsteinVazirani(oracle)
+    return bv.construct_circuit(measurement=measurement)
