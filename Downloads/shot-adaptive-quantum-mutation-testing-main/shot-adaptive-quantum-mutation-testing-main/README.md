@@ -48,44 +48,6 @@ Using alpha = 0.05 produced 5 disagreements on QAOA, all borderline kills at p =
 **4. Majority-vote trials (n_trials = 3)**
 The 1 remaining disagreement was a case where the adaptive drew one lucky deviant 400-shot sample out of a single run. Running each strategy 3 times independently and taking the majority verdict (killed if ≥ 2/3 agree) eliminated this noise. The adaptive still benefits from early stopping within each trial, so shot savings are preserved. Impact: 99.6% → 100% mutant-level agreement at 3× cost.
 
-## Results
-
-### Bernstein-Vazirani (BV)
-Deterministic circuit (single outcome with probability 1.0). Killed mutants produce impossible outcomes, detected instantly regardless of alpha or n_trials. Survived mutants re-insert gates that preserve the output.
-
-| Metric | Fixed | Adaptive |
-|--------|-------|----------|
-| Killed | 246 (84.0%) | 246 (84.0%) |
-| Survived | 47 (16.0%) | 47 (16.0%) |
-| Total shots | 690,000 | 148,200 |
-| Shot savings | — | **78.5%** |
-| Time savings | — | **47.2%** |
-| Mutant agreement | **293/293 (100%)** | |
-
-Config: alpha=0.01, n_trials=1, 2000 shots max, 200/batch.
-
-### QAOA MaxCut
-Multi-outcome distribution (9–16 outcomes) from a Quantum Approximate Optimization Algorithm on a 4-qubit ring graph. Tests the statistical machinery on probabilistic circuits where the chi-squared test must distinguish subtle distribution shifts.
-
-| Metric | Fixed | Adaptive |
-|--------|-------|----------|
-| Killed | 192 (84.2%) | 192 (84.2%) |
-| Survived | 36 (15.8%) | 36 (15.8%) |
-| Total shots | 1,608,000 | 339,600 |
-| Shot savings | — | **78.9%** |
-| Time savings | — | **39.9%** |
-| Mutant agreement | **228/228 (100%)** | |
-
-Config: alpha=0.01, n_trials=3, 2000 shots max, 200/batch.
-
-**Agreement improvement progression** (QAOA):
-
-| Technique added | Agreement | Disagree |
-|-----------------|-----------|----------|
-| Baseline (10k shots, alpha=0.05, n=1) | 90.8% | 21 |
-| + 100k baseline | 97.8% | 5 |
-| + alpha=0.01 | 99.6% | 1 |
-| + n_trials=3 majority vote | **100.0%** | 0 |
 
 ## Mutation Operators
 
