@@ -1,0 +1,86 @@
+{
+  "algorithm": "dj",
+  "source_file": "programs/dj.py",
+  "baseline_shots": 100000,
+  "fixed_shots": 10000,
+  "adaptive_batch_size": 1000,
+  "adaptive_max_shots": 10000,
+  "alpha": 0.01,
+  "equiv_min_effect": 0.3,
+  "equiv_power_threshold": 0.8,
+  "seed_simulator": 42,
+  "n_trials": 3,
+  "test_cases": [
+    {
+      "id": "dj_n2",
+      "params": {
+        "n_qubits": 2,
+        "qasm_file": "dj_indep_qiskit_2.qasm"
+      },
+      "expected_distribution": {
+        "1": 1.0
+      }
+    },
+    {
+      "id": "dj_n3",
+      "params": {
+        "n_qubits": 3,
+        "qasm_file": "dj_indep_qiskit_3.qasm"
+      },
+      "expected_distribution": {
+        "11": 1.0
+      }
+    },
+    {
+      "id": "dj_n4",
+      "params": {
+        "n_qubits": 4,
+        "qasm_file": "dj_indep_qiskit_4.qasm"
+      },
+      "expected_distribution": {
+        "111": 1.0
+      }
+    },
+    {
+      "id": "dj_n6",
+      "params": {
+        "n_qubits": 6,
+        "qasm_file": "dj_indep_qiskit_6.qasm"
+      },
+      "expected_distribution": {
+        "11111": 1.0
+      }
+    },
+    {
+      "id": "dj_n7",
+      "params": {
+        "n_qubits": 7,
+        "qasm_file": "dj_indep_qiskit_7.qasm"
+      },
+      "expected_distribution": {
+        "111111": 1.0
+      }
+    },
+    {
+      "id": "dj_n8",
+      "params": {
+        "n_qubits": 8,
+        "qasm_file": "dj_indep_qiskit_8.qasm"
+      },
+      "expected_distribution": {
+        "1111111": 1.0
+      }
+    },
+    {
+      "id": "dj_n10",
+      "params": {
+        "n_qubits": 10,
+        "qasm_file": "dj_indep_qiskit_10.qasm"
+      },
+      "expected_distribution": {
+        "111111111": 1.0
+      }
+    }
+  ],
+  "equiv_min_shots": 1000
+}

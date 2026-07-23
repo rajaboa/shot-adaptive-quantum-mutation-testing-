@@ -1,0 +1,125 @@
+{
+  "algorithm": "qwalk-noancilla",
+  "source_file": "programs/qwalk_noancilla.py",
+  "baseline_shots": 100000,
+  "fixed_shots": 10000,
+  "adaptive_batch_size": 1000,
+  "adaptive_max_shots": 10000,
+  "alpha": 0.01,
+  "equiv_min_effect": 0.3,
+  "equiv_power_threshold": 0.8,
+  "seed_simulator": 42,
+  "n_trials": 3,
+  "test_cases": [
+    {
+      "id": "qwalk_noancilla_n3",
+      "params": {
+        "n_qubits": 3,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_3.qasm"
+      },
+      "expected_distribution": {
+        "011": 0.50104,
+        "111": 0.49896
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n4",
+      "params": {
+        "n_qubits": 4,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_4.qasm"
+      },
+      "expected_distribution": {
+        "0100": 0.12674,
+        "0101": 0.12452,
+        "0111": 0.49936,
+        "1110": 0.12667,
+        "1111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n5",
+      "params": {
+        "n_qubits": 5,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_5.qasm"
+      },
+      "expected_distribution": {
+        "01000": 0.12674,
+        "01011": 0.12452,
+        "01111": 0.49936,
+        "11100": 0.12667,
+        "11111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n6",
+      "params": {
+        "n_qubits": 6,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_6.qasm"
+      },
+      "expected_distribution": {
+        "010000": 0.12674,
+        "010111": 0.12452,
+        "011111": 0.49936,
+        "111000": 0.12667,
+        "111111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n7",
+      "params": {
+        "n_qubits": 7,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_7.qasm"
+      },
+      "expected_distribution": {
+        "0100000": 0.12674,
+        "0101111": 0.12452,
+        "0111111": 0.49936,
+        "1110000": 0.12667,
+        "1111111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n8",
+      "params": {
+        "n_qubits": 8,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_8.qasm"
+      },
+      "expected_distribution": {
+        "01000000": 0.12674,
+        "01011111": 0.12452,
+        "01111111": 0.49936,
+        "11100000": 0.12667,
+        "11111111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n9",
+      "params": {
+        "n_qubits": 9,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_9.qasm"
+      },
+      "expected_distribution": {
+        "010000000": 0.12674,
+        "010111111": 0.12452,
+        "011111111": 0.49936,
+        "111000000": 0.12667,
+        "111111111": 0.12271
+      }
+    },
+    {
+      "id": "qwalk_noancilla_n10",
+      "params": {
+        "n_qubits": 10,
+        "qasm_file": "qwalk-noancilla_indep_qiskit_10.qasm"
+      },
+      "expected_distribution": {
+        "0100000000": 0.12674,
+        "0101111111": 0.12452,
+        "0111111111": 0.49936,
+        "1110000000": 0.12667,
+        "1111111111": 0.12271
+      }
+    }
+  ],
+  "equiv_min_shots": 1000
+}

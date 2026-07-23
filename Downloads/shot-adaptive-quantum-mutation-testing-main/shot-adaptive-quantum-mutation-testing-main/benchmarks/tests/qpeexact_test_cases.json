@@ -1,0 +1,106 @@
+{
+  "algorithm": "qpeexact",
+  "source_file": "programs/qpeexact.py",
+  "baseline_shots": 100000,
+  "fixed_shots": 10000,
+  "adaptive_batch_size": 1000,
+  "adaptive_max_shots": 10000,
+  "alpha": 0.01,
+  "equiv_min_effect": 0.3,
+  "equiv_power_threshold": 0.8,
+  "seed_simulator": 42,
+  "n_trials": 3,
+  "test_cases": [
+    {
+      "id": "qpeexact_n2",
+      "params": {
+        "n_qubits": 2,
+        "qasm_file": "qpeexact_indep_qiskit_2.qasm"
+      },
+      "expected_distribution": {
+        "1": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n3",
+      "params": {
+        "n_qubits": 3,
+        "qasm_file": "qpeexact_indep_qiskit_3.qasm"
+      },
+      "expected_distribution": {
+        "10": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n4",
+      "params": {
+        "n_qubits": 4,
+        "qasm_file": "qpeexact_indep_qiskit_4.qasm"
+      },
+      "expected_distribution": {
+        "100": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n5",
+      "params": {
+        "n_qubits": 5,
+        "qasm_file": "qpeexact_indep_qiskit_5.qasm"
+      },
+      "expected_distribution": {
+        "1001": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n6",
+      "params": {
+        "n_qubits": 6,
+        "qasm_file": "qpeexact_indep_qiskit_6.qasm"
+      },
+      "expected_distribution": {
+        "10010": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n7",
+      "params": {
+        "n_qubits": 7,
+        "qasm_file": "qpeexact_indep_qiskit_7.qasm"
+      },
+      "expected_distribution": {
+        "100100": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n8",
+      "params": {
+        "n_qubits": 8,
+        "qasm_file": "qpeexact_indep_qiskit_8.qasm"
+      },
+      "expected_distribution": {
+        "1001001": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n9",
+      "params": {
+        "n_qubits": 9,
+        "qasm_file": "qpeexact_indep_qiskit_9.qasm"
+      },
+      "expected_distribution": {
+        "10010010": 1.0
+      }
+    },
+    {
+      "id": "qpeexact_n10",
+      "params": {
+        "n_qubits": 10,
+        "qasm_file": "qpeexact_indep_qiskit_10.qasm"
+      },
+      "expected_distribution": {
+        "100100100": 1.0
+      }
+    }
+  ],
+  "equiv_min_shots": 1000
+}

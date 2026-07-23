@@ -1,0 +1,115 @@
+{
+  "algorithm": "ghz",
+  "source_file": "programs/ghz.py",
+  "baseline_shots": 100000,
+  "fixed_shots": 10000,
+  "adaptive_batch_size": 1000,
+  "adaptive_max_shots": 10000,
+  "alpha": 0.01,
+  "equiv_min_effect": 0.3,
+  "equiv_power_threshold": 0.8,
+  "seed_simulator": 42,
+  "n_trials": 3,
+  "test_cases": [
+    {
+      "id": "ghz_n2",
+      "params": {
+        "n_qubits": 2,
+        "qasm_file": "ghz_indep_qiskit_2.qasm"
+      },
+      "expected_distribution": {
+        "00": 0.49947,
+        "11": 0.50053
+      }
+    },
+    {
+      "id": "ghz_n3",
+      "params": {
+        "n_qubits": 3,
+        "qasm_file": "ghz_indep_qiskit_3.qasm"
+      },
+      "expected_distribution": {
+        "000": 0.50027,
+        "111": 0.49973
+      }
+    },
+    {
+      "id": "ghz_n4",
+      "params": {
+        "n_qubits": 4,
+        "qasm_file": "ghz_indep_qiskit_4.qasm"
+      },
+      "expected_distribution": {
+        "0000": 0.50043,
+        "1111": 0.49957
+      }
+    },
+    {
+      "id": "ghz_n5",
+      "params": {
+        "n_qubits": 5,
+        "qasm_file": "ghz_indep_qiskit_5.qasm"
+      },
+      "expected_distribution": {
+        "00000": 0.50186,
+        "11111": 0.49814
+      }
+    },
+    {
+      "id": "ghz_n6",
+      "params": {
+        "n_qubits": 6,
+        "qasm_file": "ghz_indep_qiskit_6.qasm"
+      },
+      "expected_distribution": {
+        "000000": 0.49977,
+        "111111": 0.50023
+      }
+    },
+    {
+      "id": "ghz_n7",
+      "params": {
+        "n_qubits": 7,
+        "qasm_file": "ghz_indep_qiskit_7.qasm"
+      },
+      "expected_distribution": {
+        "0000000": 0.49934,
+        "1111111": 0.50066
+      }
+    },
+    {
+      "id": "ghz_n8",
+      "params": {
+        "n_qubits": 8,
+        "qasm_file": "ghz_indep_qiskit_8.qasm"
+      },
+      "expected_distribution": {
+        "00000000": 0.49875,
+        "11111111": 0.50125
+      }
+    },
+    {
+      "id": "ghz_n9",
+      "params": {
+        "n_qubits": 9,
+        "qasm_file": "ghz_indep_qiskit_9.qasm"
+      },
+      "expected_distribution": {
+        "000000000": 0.50036,
+        "111111111": 0.49964
+      }
+    },
+    {
+      "id": "ghz_n10",
+      "params": {
+        "n_qubits": 10,
+        "qasm_file": "ghz_indep_qiskit_10.qasm"
+      },
+      "expected_distribution": {
+        "0000000000": 0.50206,
+        "1111111111": 0.49794
+      }
+    }
+  ],
+  "equiv_min_shots": 1000
+}

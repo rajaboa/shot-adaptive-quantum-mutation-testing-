@@ -1,0 +1,151 @@
+{
+  "algorithm": "wstate",
+  "source_file": "programs/wstate.py",
+  "baseline_shots": 100000,
+  "fixed_shots": 10000,
+  "adaptive_batch_size": 1000,
+  "adaptive_max_shots": 10000,
+  "alpha": 0.01,
+  "equiv_min_effect": 0.3,
+  "equiv_power_threshold": 0.8,
+  "seed_simulator": 42,
+  "n_trials": 3,
+  "test_cases": [
+    {
+      "id": "wstate_n2",
+      "params": {
+        "n_qubits": 2,
+        "qasm_file": "wstate_indep_qiskit_2.qasm"
+      },
+      "expected_distribution": {
+        "01": 0.50104,
+        "10": 0.49896
+      }
+    },
+    {
+      "id": "wstate_n3",
+      "params": {
+        "n_qubits": 3,
+        "qasm_file": "wstate_indep_qiskit_3.qasm"
+      },
+      "expected_distribution": {
+        "001": 0.33341,
+        "010": 0.33381,
+        "100": 0.33278
+      }
+    },
+    {
+      "id": "wstate_n4",
+      "params": {
+        "n_qubits": 4,
+        "qasm_file": "wstate_indep_qiskit_4.qasm"
+      },
+      "expected_distribution": {
+        "0001": 0.25126,
+        "0010": 0.24978,
+        "0100": 0.24958,
+        "1000": 0.24938
+      }
+    },
+    {
+      "id": "wstate_n5",
+      "params": {
+        "n_qubits": 5,
+        "qasm_file": "wstate_indep_qiskit_5.qasm"
+      },
+      "expected_distribution": {
+        "00001": 0.20247,
+        "00010": 0.19775,
+        "00100": 0.20006,
+        "01000": 0.20147,
+        "10000": 0.19825
+      }
+    },
+    {
+      "id": "wstate_n6",
+      "params": {
+        "n_qubits": 6,
+        "qasm_file": "wstate_indep_qiskit_6.qasm"
+      },
+      "expected_distribution": {
+        "000001": 0.16884,
+        "000010": 0.16457,
+        "000100": 0.16763,
+        "001000": 0.16618,
+        "010000": 0.16813,
+        "100000": 0.16465
+      }
+    },
+    {
+      "id": "wstate_n7",
+      "params": {
+        "n_qubits": 7,
+        "qasm_file": "wstate_indep_qiskit_7.qasm"
+      },
+      "expected_distribution": {
+        "0000001": 0.14465,
+        "0000010": 0.14205,
+        "0000100": 0.14253,
+        "0001000": 0.1427,
+        "0010000": 0.14355,
+        "0100000": 0.14406,
+        "1000000": 0.14046
+      }
+    },
+    {
+      "id": "wstate_n8",
+      "params": {
+        "n_qubits": 8,
+        "qasm_file": "wstate_indep_qiskit_8.qasm"
+      },
+      "expected_distribution": {
+        "00000001": 0.12674,
+        "00000010": 0.12452,
+        "00000100": 0.12442,
+        "00001000": 0.12536,
+        "00010000": 0.12403,
+        "00100000": 0.12555,
+        "01000000": 0.12667,
+        "10000000": 0.12271
+      }
+    },
+    {
+      "id": "wstate_n9",
+      "params": {
+        "n_qubits": 9,
+        "qasm_file": "wstate_indep_qiskit_9.qasm"
+      },
+      "expected_distribution": {
+        "000000001": 0.11249,
+        "000000010": 0.11133,
+        "000000100": 0.10959,
+        "000001000": 0.11209,
+        "000010000": 0.11103,
+        "000100000": 0.11069,
+        "001000000": 0.11141,
+        "010000000": 0.11251,
+        "100000000": 0.10886
+      }
+    },
+    {
+      "id": "wstate_n10",
+      "params": {
+        "n_qubits": 10,
+        "qasm_file": "wstate_indep_qiskit_10.qasm"
+      },
+      "expected_distribution": {
+        "0000000001": 0.10115,
+        "0000000010": 0.10132,
+        "0000000100": 0.09838,
+        "0000001000": 0.09937,
+        "0000010000": 0.10082,
+        "0000100000": 0.09924,
+        "0001000000": 0.10071,
+        "0010000000": 0.10076,
+        "0100000000": 0.09986,
+        "1000000000": 0.09839
+      }
+    }
+  ],
+  "equiv_min_shots": 1000
+}
