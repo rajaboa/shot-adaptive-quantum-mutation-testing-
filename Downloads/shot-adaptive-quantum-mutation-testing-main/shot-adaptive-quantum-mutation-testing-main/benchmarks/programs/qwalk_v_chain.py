@@ -1,4 +1,4 @@
-"""MQTBench bridge: forwards 'vqe' to adaptive_runner.py.
+"""MQTBench bridge: forwards 'qwalk-v-chain' to adaptive_runner.py.
 Do not modify -- auto-generated for circuit-level mutation testing.
 """
 import sys
@@ -15,4 +15,4 @@ from programs import REGISTRY as _REGISTRY
 
 
 def build_circuit(n_qubits, measurement=True, **kwargs):
-    return _REGISTRY['vqe'].build_circuit(n_qubits)
+    return _REGISTRY['qwalk-v-chain'].build_circuit(n_qubits)
