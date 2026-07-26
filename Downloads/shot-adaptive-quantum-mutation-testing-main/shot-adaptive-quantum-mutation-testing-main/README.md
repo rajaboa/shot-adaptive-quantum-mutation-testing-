@@ -114,9 +114,9 @@ python adaptive_runner.py test_cases/qaoa_test_cases.json --circuit-level -v
 {
   "algorithm": "qaoa_maxcut",
   "source_file": "programs/qaoa_maxcut.py",
-  "baseline_shots": 100000,
+  "baseline_shots": 10000,
   "fixed_shots": 2000,
-  "adaptive_batch_size": 200,
+  "adaptive_batch_size": 1000,
   "adaptive_max_shots": 2000,
   "alpha": 0.01,
   "equiv_min_effect": 0.3,
